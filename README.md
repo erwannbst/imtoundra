@@ -22,3 +22,11 @@ returns
 `{
   "encoded_bytes": "94a3636174ce61ded0d019cd0190"
 }`
+
+
+## Database
+Build the container
+`docker build -t imtoundra-db .`
+
+Run the database container
+`docker run -d -p 5432:5432 imtoundra-db`
