@@ -2,7 +2,7 @@
 
 Several micro services to detect animals and send analytics to a database.
 
-- Image recognitation
+- Image recognition
 - Encoding
 - Network
 - Database
