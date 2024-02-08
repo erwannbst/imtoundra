@@ -2,9 +2,9 @@
 FROM postgres:16
 
 # Set environment variables
-ENV POSTGRES_USER myuser
-ENV POSTGRES_PASSWORD mypassword
-ENV POSTGRES_DB mydatabase
+ENV POSTGRES_USER toundra
+ENV POSTGRES_PASSWORD toundra123
+ENV POSTGRES_DB observations
 
 # Copy the SQL script to the container
 COPY init.sql /docker-entrypoint-initdb.d/
