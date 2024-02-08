@@ -11,7 +11,8 @@ Several micro services to detect animals and send analytics to a database.
 ## Image recognition
 
 ## Encoding
-Removes the keys from the json and encodes the values to bytes with `msgpack`.
+Its job is to minimize the weight of the payload
+it removes the keys from the json and encodes the values to bytes with `msgpack`.
 ```
 curl -X POST -H "Content-Type: application/json"
 -d '{"animal_identifie": "cat", "timestamp": 1641992400, "temperature": 25, "co2": 400}'
@@ -30,3 +31,6 @@ Build the container
 
 Run the database container
 `docker run -d -p 5432:5432 imtoundra-db`
+
+## Sensors
+Two drivers that read values from two sensors (humidity and CO2 level)
