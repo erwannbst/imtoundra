@@ -10,29 +10,28 @@ Several micro services to detect animals and send analytics to a database.
 
 ## Image recognition
 
-Ce microservice utilise le modèle YOLOv7-Tiny pour détecter des objets dans une image et renvoyer les résultats sous forme de JSON.
+This microservice utilizes the YOLOv7-Tiny model to detect objects in an image and return the results in JSON format.
 
-Le fichier `recognition_visual.py` renvoie l'image après détection et sers d'exemple visuel pour le microservice situé dans le fichier `recognition_ms.py`
+The `recognition_visual.py` file displays the image after detection and serves as a visual example for the microservice located in the `recognition_ms.py` file.
 
-### Fonctionnalités
+### Features
 
-- Le microservice expose un endpoint `detect_objects` qui accepte les requêtes POST avec des images.
-- Il charge le modèle YOLOv7-Tiny pré-entraîné ainsi que les classes à partir de fichiers.
-- Les détections sont effectuées sur l'image fournie en entrée.
-- Seules les détections avec une confiance supérieure à 0.5 sont conservées.
-- Les détections redondantes sont supprimées en utilisant la suppression non maximale (NMS).
-- Les résultats sont renvoyés sous forme de JSON contenant les classes détectées et leurs confiances.
+- The microservice exposes an `detect_objects` endpoint that accepts POST requests with images.
+- It loads the pre-trained YOLOv7-Tiny model as well as classes from files.
+- Detections are performed on the provided input image.
+- Only detections with confidence above 0.5 are retained.
+- Redundant detections are removed using Non-Maximum Suppression (NMS).
+- The results are returned in JSON format containing detected classes and their confidences.
 
-### Utilisation
+### Usage
 
-1. Envoyez une requête POST avec une image à l'endpoint `/detect_objects`.
-2. Le microservice renvoie les détections d'objets détectées dans l'image.
+1. Send a POST request with an image to the `/detect_objects` endpoint.
+2. The microservice returns detected object detections in the image.
 
-### Exécution
+### Execution
 
-- Exécutez le script Python pour lancer le microservice.
-- Le microservice tourne sur `http://localhost:5000` par défaut.
-
+- Run the Python script to launch the microservice.
+- The microservice runs on `http://localhost:5000` by default.
 
 ## Encoding
 Its job is to minimize the weight of the payload
