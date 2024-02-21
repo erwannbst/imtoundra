@@ -11,7 +11,7 @@ weights_path = "./yolov7-tiny.weights"
 net = cv2.dnn.readNetFromDarknet("./yolov7-tiny.cfg", weights_path)
 
 # Charger l'image
-image = cv2.imread('./horse_example.jpeg')
+image = cv2.imread('../ours.png')
 
 # Charger les classes
 classes = []
