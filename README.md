@@ -9,6 +9,7 @@ Table of contents
 
    * [Hardware](#hardware)
       * [First unit](#first-unit)
+      * [Second unit](#second-unit)
    * [Software](#software)
       * [Image recognition](#image-recognition)
       * [Encoding](#encoding)
@@ -20,7 +21,7 @@ Table of contents
 
 This is a list of the hardware used in the project:
 
-**First unit**
+#### First unit
 
 This unit is located inside the Toundra house and is responsible for detecting animals and monitoring the environment.
 It has no internet access and sends the data to the second unit using LoRa.
@@ -44,8 +45,7 @@ It has no internet access and sends the data to the second unit using LoRa.
   />
 
 
-    
-**Second unit**
+#### Second unit
 
 This second unit is located outside the Toundra house and is responsible for sending the data to the cloud.
 It has internet access and sends the data to the cloud using Wi-Fi.
