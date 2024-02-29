@@ -47,9 +47,10 @@ def measure():
     return aht.temperature, aht.humidity, ens.CO2
 
 
-@app.route("/measure", methods=["POST"])
-def measure_endpoint():
+@app.route("/sensors", methods=["POST"])
+def sensors_endpoint():
     try:
+        print(f"Sensors service: a request was received, measuring...")
         temperature, humidity, co2 = measure()
 
         # Get animal identifier in the post request
@@ -62,6 +63,8 @@ def measure_endpoint():
             "humidity": humidity,
             "co2": co2,
         }
+
+        print(f"Sensors service: Sending data to encoding service: {data}")
 
         response = requests.post("http://localhost:5002/encode", json=data)
         return response.json()

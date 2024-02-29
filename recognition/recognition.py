@@ -14,7 +14,7 @@ def recognition():
     net = cv2.dnn.readNetFromDarknet("./yolov7-tiny.cfg", weights_path)
 
     # Charger l'image
-    image = cv2.imread("../ours.png")
+    image = cv2.imread("./ours.png")
 
     # Charger les classes
     classes = []
@@ -89,7 +89,7 @@ def recognition():
             cv2.putText(
                 image, text, (x + 2, y + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2
             )
-    return image
+    return label
 
 
 @app.route("/recognition", methods=["POST"])
@@ -97,11 +97,11 @@ def recognition_endpoint():
     try:
         print(f"Recognition service: Recognition starts")
         # exécuter la fonction de reconnaissance
-        image = recognition()
+        label = recognition()
 
         # requête au service sensors sur le port 5001
-        data = {"animal_identifie": image}
-        print(f"Recognition service: calling sensors")
+        data = {"animal_identifie": label}
+        print(f"Recognition service: found a {label}, sending to sensors...")
         response = requests.post("http://localhost:5001/sensors", json=data)
         return response.json()
 
