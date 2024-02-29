@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 import time
 
+import requests
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
 import AHT21
 import board
-
 import ENS160
 
 # set up
@@ -24,7 +28,8 @@ aht = AHT21.AHT21(1)
 # ens.operating_mode = 2
 # time.sleep(2.0)
 
-while True:
+
+def measure():
     print("Measuring temperature and humidity...")
     while not aht.is_ready:
         time.sleep(0.01)
@@ -39,3 +44,31 @@ while True:
     print("eCO2 (ppm):", ens.CO2)
 
     time.sleep(1.0)
+    return aht.temperature, aht.humidity, ens.CO2
+
+
+@app.route("/measure", methods=["POST"])
+def measure_endpoint():
+    try:
+        temperature, humidity, co2 = measure()
+
+        # Get animal identifier in the post request
+        animal_identifier = request.json.get("animal_identifier")
+
+        # Call the encoding service on port 5002
+        data = {
+            "animal_identifier": animal_identifier,
+            "temperature": temperature,
+            "humidity": humidity,
+            "co2": co2,
+        }
+
+        response = requests.post("http://localhost:5002/encode", json=data)
+        return response.json()
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5001)

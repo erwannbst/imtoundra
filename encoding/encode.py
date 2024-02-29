@@ -1,4 +1,5 @@
 import msgpack
+import requests
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -45,7 +46,11 @@ def encode_endpoint():
         encoded_values_bytes = encode_values_to_bytes(json_data)
 
         if encoded_values_bytes:
-            return jsonify({"encoded_bytes": encoded_values_bytes.hex()})
+            hex = encoded_values_bytes.hex()
+            # Call the network service on port 5003
+            data = {"encoded_bytes": hex}
+            response = requests.post("http://localhost:5003/send", json=data)
+
         else:
             return jsonify({"error": "Failed to encode values"}), 500
 
@@ -72,4 +77,4 @@ def decode_endpoint():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5002)
