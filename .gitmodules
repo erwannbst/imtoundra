@@ -1,0 +1,3 @@
+[submodule "loraspberry"]
+	path = loraspberry
+	url = https://github.com/erwannbst/loraspberry
