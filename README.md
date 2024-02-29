@@ -12,7 +12,7 @@ Table of contents
     - [2. Image recognition](#2-image-recognition)
     - [3. Sensor reading](#3-sensor-reading)
     - [4. Encoding](#4-encoding)
-    - [5. Network](#5-network)
+    - [5. Network (loraspberry)](#5-network-(loraspberry))
     - [6. Database](#6-database)
 - [Hardware](#hardware)
     - [First unit](#first-unit)
@@ -42,7 +42,7 @@ Then the unit reads the sensors (humidity, temperature, and CO2 level) and sends
 #### 4. Encoding
 The encoding microservice encodes the data to reduce the payload size and sends it to the network microservice.
 
-#### 5. Network
+#### 5. Network (loraspberry)
 The network microservice sends the data to the second unit using LoRa.
 
 #### 6. Database
@@ -140,7 +140,7 @@ returns
   "encoded_bytes": "94a3636174ce61ded0d019cd0190"
 }`
 
-### Network (pySX127x)
+### Network (loraspberry)
 This microservice is responsible for sending the data to the second unit using LoRa.
 
 
