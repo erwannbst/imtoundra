@@ -17,7 +17,6 @@ Table of contents
 
 
 ## Hardware
-<a name="hardware"/>
 
 This is a list of the hardware used in the project:
 
