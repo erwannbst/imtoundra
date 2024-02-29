@@ -7,14 +7,48 @@ It is part of the IMToundra project, which aims to monitor the environment of th
 Table of contents
 =================
 
-   * [Hardware](#hardware)
-      * [First unit](#first-unit)
-      * [Second unit](#second-unit)
-   * [Software](#software)
-      * [Image recognition](#image-recognition)
-      * [Encoding](#encoding)
-      * [Network](#network)
-      * [Database](#database)
+- [IMToundra](#imtoundra)
+- [Table of contents](#table-of-contents)
+  - [Flowchart](#flowchart)
+      - [1. Animal detection](#1-animal-detection)
+      - [2. Image recognition](#2-image-recognition)
+      - [3. Sensor reading](#3-sensor-reading)
+      - [4. Encoding](#4-encoding)
+      - [5. Network](#5-network)
+      - [6. Database](#6-database)
+  - [Hardware](#hardware)
+      - [First unit](#first-unit)
+      - [Second unit](#second-unit)
+  - [Software](#software)
+  - [Image recognition](#image-recognition)
+    - [Features](#features)
+    - [Usage](#usage)
+    - [Execution](#execution)
+  - [Sensors](#sensors)
+  - [Encoding](#encoding)
+  - [Database](#database)
+  - [Sensors](#sensors-1)
+
+## Flowchart
+
+#### 1. Animal detection
+***This step is not implemented in this project.***
+The first unit detects an animal and takes a picture of it.
+
+#### 2. Image recognition
+The image is sent to the image recognition microservice, which detects the animals in the image.
+
+#### 3. Sensor reading
+Then the unit reads the sensors (humidity, temperature, and CO2 level) and sends the data to the encoding microservice.
+
+#### 4. Encoding
+The encoding microservice encodes the data to reduce the payload size and sends it to the network microservice.
+
+#### 5. Network
+The network microservice sends the data to the second unit using LoRa.
+
+#### 6. Database
+The second unit receives the data and sends it to the database microservice.
 
 
 ## Hardware
@@ -89,6 +123,10 @@ The `recognition_visual.py` file displays the image after detection and serves a
 
 - Run the Python script to launch the microservice.
 - The microservice runs on `http://localhost:5000` by default.
+
+## Sensors
+
+Microservice of the fist unit with the sensors. It is responsible for reading the sensors and sending the data to the encoding microservice.
 
 ## Encoding
 Its job is to minimize the weight of the payload
