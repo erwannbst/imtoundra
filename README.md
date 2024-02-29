@@ -1,4 +1,30 @@
-# imtoundra
+# IMToundra
+
+This project is a collection of microservices that detect animals and send analytics to a database.
+It is part of the IMToundra project, which aims to monitor the environment of the Toundra house.
+
+## Hardware
+
+This is a list of the hardware used in the project:
+
+**First unit**
+This unit is located inside the Toundra house and is responsible for detecting animals and monitoring the environment.
+It has no internet access and sends the data to the second unit using LoRa.
+
+- Raspberry Pi 3B
+- ENS160 humidity sensor + AHT21 temperature sensor
+- LED for visual feedback
+- Ra-02 LoRa module (SX1278)
+
+    
+**Second unit**
+This unit is located outside the Toundra house and is responsible for sending the data to the cloud.
+It has internet access and sends the data to the cloud using Wi-Fi.
+
+- Raspberry Pi Zero W
+- Ra-02 LoRa module (SX1278)
+
+## Software
 
 Several micro services to detect animals and send analytics to a database.
 
