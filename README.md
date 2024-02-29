@@ -4,8 +4,20 @@
 This project is a collection of microservices that detect animals and send analytics to a database.
 It is part of the IMToundra project, which aims to monitor the environment of the Toundra house.
 
-## Hardware
+Table of contents
+=================
 
+   * [Hardware](#hardware)
+      * [First unit](#first-unit)
+   * [Software](#software)
+      * [Image recognition](#image-recognition)
+      * [Encoding](#encoding)
+      * [Network](#network)
+      * [Database](#database)
+
+
+## Hardware
+<a name="hardware"/>
 
 This is a list of the hardware used in the project:
 
