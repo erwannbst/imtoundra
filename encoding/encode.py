@@ -43,12 +43,14 @@ def decode_bytes_to_values(encoded_bytes):
 def encode_endpoint():
     try:
         json_data = request.get_json()
+        print(f"Encode service: received: {json_data}")
         encoded_values_bytes = encode_values_to_bytes(json_data)
 
         if encoded_values_bytes:
             hex = encoded_values_bytes.hex()
             # Call the network service on port 5003
             data = {"encoded_bytes": hex}
+            print(f"Encode service: Sending data to network service: {data}")
             response = requests.post("http://localhost:5003/send", json=data)
 
         else:

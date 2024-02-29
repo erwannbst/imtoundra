@@ -95,12 +95,14 @@ def recognition():
 @app.route("/recognition", methods=["POST"])
 def recognition_endpoint():
     try:
+        print(f"Recognition service: Recognition starts")
         # exécuter la fonction de reconnaissance
         image = recognition()
 
         # requête au service sensors sur le port 5001
         data = {"animal_identifie": image}
-        response = requests.post("http://localhost:5001/encode", json=data)
+        print(f"Recognition service: calling sensors")
+        response = requests.post("http://localhost:5001/sensors", json=data)
         return response.json()
 
     except Exception as e:
