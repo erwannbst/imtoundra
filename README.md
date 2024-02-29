@@ -20,14 +20,14 @@ Table of contents
       - [First unit](#first-unit)
       - [Second unit](#second-unit)
   - [Software](#software)
-  - [Image recognition](#image-recognition)
-    - [Features](#features)
-    - [Usage](#usage)
-    - [Execution](#execution)
-  - [Sensors](#sensors)
-  - [Encoding](#encoding)
-  - [Database](#database)
-  - [Sensors](#sensors-1)
+    - [Image recognition](#image-recognition)
+      - [Features](#features)
+      - [Usage](#usage)
+      - [Execution](#execution)
+    - [Sensors](#sensors)
+    - [Encoding](#encoding)
+    - [Network (pySX127x)](#network)
+    - [Database](#database)
 
 ## Flowchart
 
@@ -99,13 +99,13 @@ Several micro services to detect animals and send analytics to a database.
 - Database
 - Analytics
 
-## Image recognition
+### Image recognition
 
 This microservice utilizes the YOLOv7-Tiny model to detect objects in an image and return the results in JSON format.
 
 The `recognition_visual.py` file displays the image after detection and serves as a visual example for the microservice located in the `recognition_ms.py` file.
 
-### Features
+#### Features
 
 - The microservice exposes an `detect_objects` endpoint that accepts POST requests with images.
 - It loads the pre-trained YOLOv7-Tiny model as well as classes from files.
@@ -114,21 +114,21 @@ The `recognition_visual.py` file displays the image after detection and serves a
 - Redundant detections are removed using Non-Maximum Suppression (NMS).
 - The results are returned in JSON format containing detected classes and their confidences.
 
-### Usage
+##### Usage
 
 1. Send a POST request with an image to the `/detect_objects` endpoint.
 2. The microservice returns detected object detections in the image.
 
-### Execution
+##### Execution
 
 - Run the Python script to launch the microservice.
 - The microservice runs on `http://localhost:5000` by default.
 
-## Sensors
+### Sensors
 
 Microservice of the fist unit with the sensors. It is responsible for reading the sensors and sending the data to the encoding microservice.
 
-## Encoding
+### Encoding
 Its job is to minimize the weight of the payload
 it removes the keys from the json and encodes the values to bytes with `msgpack`.
 ```
@@ -142,13 +142,13 @@ returns
   "encoded_bytes": "94a3636174ce61ded0d019cd0190"
 }`
 
+### Network (pySX127x)
+This microservice is responsible for sending the data to the second unit using LoRa.
 
-## Database
+
+### Database
 Build the container
 `docker build -t imtoundra-db .`
 
 Run the database container
 `docker run -d -p 5432:5432 imtoundra-db`
-
-## Sensors
-Two drivers that read values from two sensors (humidity and CO2 level)
