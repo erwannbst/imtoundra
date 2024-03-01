@@ -19,8 +19,8 @@ def decode_bytes_to_values(encoded_bytes):
     # The structure of the JSON data is:
     # {
     #     "animal_identifie": first_value,
-    #     "timestamp": second_value,
-    #     "temperature": third_value,
+    #     "temperature": second_value,
+    #     "humidity": third_value,
     #     "co2": fourth_value
     # }
     # The output only contains the values of the dictionary in the same order as the input JSON data
@@ -28,8 +28,8 @@ def decode_bytes_to_values(encoded_bytes):
         decoded_values = msgpack.unpackb(bytes.fromhex(encoded_bytes))
         json_data = {
             "animal_identifier": decoded_values[0],
-            "timestamp": decoded_values[1],
-            "temperature": decoded_values[2],
+            "temperature": decoded_values[1],
+            "humidity": decoded_values[2],
             "co2": decoded_values[3],
         }
         return json_data
