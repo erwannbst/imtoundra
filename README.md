@@ -24,10 +24,12 @@ Table of contents
     - [Execution](#execution)
   - [Sensors](#sensors)
   - [Encoding](#encoding)
-  - [Network (pySX127x)](#network)
+  - [Network (loraspberry)](#network-(loraspberry))
   - [Database](#database)
 
 ## Flowchart
+
+![schematic](https://github.com/erwannbst/imtoundra/assets/16354899/977da74f-3836-42ef-9b3d-d24325303846)
 
 #### 1. Animal detection
 ***This step is not implemented in this project.***
