@@ -51,7 +51,8 @@ def encode_endpoint():
             # Call the network service on port 5003
             data = {"encoded_bytes": hex}
             print(f"Encode service: Sending data to network service: {data}")
-            response = requests.post("http://localhost:5003/send", json=data)
+            response = requests.post("http://localhost:5004/send", json=data)
+            return jsonify({"encoded_bytes": hex})
 
         else:
             return jsonify({"error": "Failed to encode values"}), 500
@@ -64,11 +65,13 @@ def encode_endpoint():
 def decode_endpoint():
     try:
         json_data = request.get_json()
+        print(f"Decode service: received: {json_data}")
         encoded_bytes = json_data.get("encoded_bytes")
         if not encoded_bytes:
             return jsonify({"error": "No encoded bytes provided"}), 400
 
         decoded_values = decode_bytes_to_values(encoded_bytes)
+        print(f"Decode service: decoded: {decoded_values}")
         if decoded_values:
             return jsonify(decoded_values)
         else:

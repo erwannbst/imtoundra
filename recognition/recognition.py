@@ -92,6 +92,7 @@ def recognition():
     return label
 
 
+# Call with curl -X POST http://localhost:5000/recognition
 @app.route("/recognition", methods=["POST"])
 def recognition_endpoint():
     try:

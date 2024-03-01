@@ -54,11 +54,11 @@ def sensors_endpoint():
         temperature, humidity, co2 = measure()
 
         # Get animal identifier in the post request
-        animal_identifier = request.json.get("animal_identifier")
+        animal_identifie = request.json.get("animal_identifie")
 
         # Call the encoding service on port 5002
         data = {
-            "animal_identifier": animal_identifier,
+            "animal_identifie": animal_identifie,
             "temperature": temperature,
             "humidity": humidity,
             "co2": co2,
